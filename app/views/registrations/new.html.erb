@@ -2,18 +2,60 @@
 
 <%= form_for(@user, url: registrations_path) do |f| %>
 
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <div>
+    <% if flash[:errors] && flash[:errors][:first_name] && !flash[:errors][:first_name].empty? %>
+      <% flash[:errors][:first_name].each do |message| %>
+        <label for="first_name" style="color: orangered;">First Name <%= message %></label>
+      <% end %>
+    <% else %>
+      <%= f.label :first_name %>
+    <% end %>
+    <%= f.text_field :first_name %>
+  </div>
 
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
+  <div>
+    <% if flash[:errors] && flash[:errors][:last_name] && !flash[:errors][:last_name].empty? %>
+      <% flash[:errors][:last_name].each do |message| %>
+        <label for="last_name" style="color: orangered;">Last Name <%= message %></label>
+      <% end %>
+    <% else %>
+      <%= f.label :last_name %>
+    <% end %>
+    <%= f.text_field :last_name %>
+  </div>
 
-   <%= f.label :username %>
-  <%= f.text_field :username %>
+  <div>
+    <% if flash[:errors] && flash[:errors][:username] && !flash[:errors][:username].empty? %>
+      <% flash[:errors][:username].each do |message| %>
+        <label for="username" style="color: orangered;">Username <%= message %></label>
+      <% end %>
+    <% else %>
+      <%= f.label :username %>
+    <% end %>
+    <%= f.text_field :username %>
+  </div>
 
-   <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <div>
+    <% if flash[:errors] && flash[:errors][:email] && !flash[:errors][:email].empty? %>
+      <% flash[:errors][:email].each do |message| %>
+        <label for="email" style="color: orangered;">Email <%= message %></label>
+      <% end %>
+    <% else %>
+      <%= f.label :email %>
+    <% end %>
+    <%= f.email_field :email %>
+  </div>
 
-   <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
+  <div>
+    <% if flash[:errors] && flash[:errors][:password] && !flash[:errors][:password].empty? %>
+      <% flash[:errors][:password].each do |message| %>
+        <label for="password" style="color: orangered;">Password <%= message %></label>
+      <% end %>
+    <% else %>
+      <%= f.label :password %>
+    <% end %>
+    <%= f.password_field :password %>
+  </div>
+
+  <%= f.submit "Register Account" %>
 <% end %>
